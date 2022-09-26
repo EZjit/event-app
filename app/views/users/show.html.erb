@@ -1,6 +1,6 @@
 <div class="container">
-  <h2 class="align-center">@<%= @user.email %></h2>
-  <h3> Created events: </h3>
+  <h2 class="align-center">@<%= @user.email %></h2><br /><br />
+  <h4> Created events: </h4>
   <% @created_events.each do |event| %>
     <h5><%= link_to "#{event.title}", event, class: 'link-dark' %></h5>
   <% end %>

@@ -10,5 +10,11 @@
         <p><%= att.email %></p>
       <% end %>
     </div>
+    <% if current_user == @event.creator %>
+      <div class="col">
+        <%= button_to 'Delete event', event_path, method: :delete,
+                      data: { confirm: "Are you sure?" }, class: 'btn btn-danger' %>
+      </div>
+    <% end %>
   </div>
 </div>

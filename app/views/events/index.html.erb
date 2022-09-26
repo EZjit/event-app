@@ -1,7 +1,16 @@
-<div class="d-grid gap 2">
-  <% @events.each do |event| %>
+<h1 class="text-center">Upcoming events</h1>
+<div class="d-grid gap-2">
+  <% Event.upcoming_events.each do |event| %>
     <div class="container p-2 bg-light-border">
       <%= render event %>
     </div>
   <% end %>
-</div>
+</div><br /><br /><br />
+<h1 class="text-center">Past events</h1>
+<div class="d-grid gap-2">
+  <% Event.past_events.each do |event| %>
+    <div class="container p-2 bg-light-border">
+      <%= render event %>
+    </div>
+  <% end %>
+</div><
