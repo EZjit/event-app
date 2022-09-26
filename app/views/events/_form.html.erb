@@ -1,0 +1,20 @@
+<div class="container">
+  <%= simple_form_for event do |f| %>
+    <% if event.errors.any? %>
+      <div class="validation_errors">
+        <h2><% pluralize(event.errors.count, 'error') %> prohibited this event from being saved:</h2>
+        <ul>
+          <% event.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.input :location %>
+    <%= f.input :event_date, as: :date, html5: true %>
+    <%= f.button :submit, class: 'btn btn-success mt-2 mb-2' %>
+  <% end %>
+</div>

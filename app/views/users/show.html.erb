@@ -1,0 +1,27 @@
+<div class="container">
+  <h2 class="align-center">@<%= @user.email %></h2>
+  <h3> Created events: </h3>
+  <% @created_events.each do |event| %>
+    <h5><%= link_to "#{event.title}", event, class: 'link-dark' %></h5>
+  <% end %>
+  <br /><br />
+
+  <h5>Upcoming events:</h5>
+  <% @upcoming_events = @attended_events.where("event_date >= ?", Time.zone.now) %>
+  <% if @upcoming_events.any? %>
+    <% @upcoming_events.each do |event| %>
+      <h5><%= link_to "#{event.title}", event, class: 'link-dark' %></h5>
+    <% end %>
+  <% else %>
+    <p>No upcoming events</p>
+  <% end %><br /><br />
+  <h5>Past events:</h5>
+  <% @past_events = @attended_events.where("event_date < ?", Time.zone.now) %>
+  <% if @past_events.any? %>
+    <% @past_events.each do |event| %>
+      <h5><%= link_to "#{event.title}", event, class: 'link-dark' %></h5>
+    <% end %>
+  <% else %>
+    <p>No past events</p>
+  <% end %>
+</div>

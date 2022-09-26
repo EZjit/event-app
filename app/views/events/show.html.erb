@@ -1,0 +1,14 @@
+<div class="container-fluid">
+  <div class="row align-items-start">
+    <div class="col">
+      <%= render @event %>
+      <%= render 'attend_buttons', event: @event %>
+    </div>
+    <div class="col">
+      <p>People attended on this event:</p>
+      <% @attendees.each do |att| %>
+        <p><%= att.email %></p>
+      <% end %>
+    </div>
+  </div>
+</div>
