@@ -1,24 +1,8 @@
-# README
+Event app
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Functionality
+  user can create an account with email (ONLY email! user name is not supported)
+  user can login and logout
+  user can edit account 
+  users can create and delete events
+  users can attend events and cancel their attends
