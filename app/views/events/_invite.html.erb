@@ -1,7 +1,7 @@
 <h3 class="text-center">Invite users</h3>
-<%= form_with model: event.attendances.build do |f| %>
+<%= form_with model: event.attendances.build(event_id: event.id) do |f| %>
   <%= f.hidden_field :event_id %>
-  <%= f.collection_check_boxes :attendee_id, User.where('id != ?', current_user.id).order(:email), :id, :email do |b| %>
+  <%= f.collection_check_boxes :attendee_id, User.includes(:attends).where('users.id != ?', current_user.id).order(:email).select { |user| user.not_attended?(event) }, :id, :email do |b| %>
     <li>
       <%= b.check_box %>
       <%= b.label %>

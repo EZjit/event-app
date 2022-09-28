@@ -4,4 +4,6 @@ class Attend < ApplicationRecord
 
   # event
   belongs_to :attended_event, foreign_key: :event_id, class_name: 'Event'
+
+  validates :attendee_id, uniqueness: { scope: :event_id, message: 'You already been enrolled for this event' }
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -17,5 +19,7 @@ class User < ApplicationRecord
     event.attendees.include?(self)
   end
 
-
+  def not_attended?(event)
+    event.attendees.exclude?(self)
+  end
 end

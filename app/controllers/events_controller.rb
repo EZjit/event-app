@@ -20,9 +20,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    @attend = Attend.new
     @attendees = @event.attendees
-    @users = User.where('id != ?', current_user.id)
   end
 
   def edit; end

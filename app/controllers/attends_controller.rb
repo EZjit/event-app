@@ -1,9 +1,15 @@
 class AttendsController < ApplicationController
   def create
-    debugger
     @event = Event.find(params[:attend][:event_id])
-    @attend = current_user.attends.new(event_id: @event.id)
-    if @attend.save
+    if params[:attend][:attendee_id].instance_of?(Array)
+      params[:attend].fetch(:attendee_id, []).each do |id|
+        @attend = Attend.new(attendee_id: id, event_id: @event.id)
+        @attend.save
+      end
+      redirect_to @event, notice: 'Chosen users has been invited to event!'
+    else
+      @attend = Attend.new(attend_params)
+      @attend.save
       redirect_to @event, notice: "You've successfully attended the event!"
     end
   end
@@ -19,6 +25,6 @@ class AttendsController < ApplicationController
   private
 
   def attend_params
-    params.require(:attend).permit(:attendee_ids)
+    params.require(:attend).permit(:event_id, :attendee_id, attendee_id: [])
   end
 end
