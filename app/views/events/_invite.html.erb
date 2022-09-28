@@ -1,0 +1,11 @@
+<h3 class="text-center">Invite users</h3>
+<%= form_with model: event.attendances.build do |f| %>
+  <%= f.hidden_field :event_id %>
+  <%= f.collection_check_boxes :attendee_id, User.where('id != ?', current_user.id).order(:email), :id, :email do |b| %>
+    <li>
+      <%= b.check_box %>
+      <%= b.label %>
+    </li>
+  <% end %>
+  <%= f.submit 'Invite users', class: 'btn btn-success mt-2 mb-2' %>
+<% end %>
