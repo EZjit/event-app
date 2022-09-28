@@ -22,6 +22,7 @@ class EventsController < ApplicationController
   def show
     @attend = Attend.new
     @attendees = @event.attendees
+    @users = User.where('id != ?', current_user.id)
   end
 
   def edit; end
@@ -43,7 +44,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(%i[title description location event_date])
+    params.require(:event).permit(%i[title description location event_date event_type])
   end
 
   def set_event

@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-  <%= form_for(current_user.attends.build(event_id: event.id)) do |f| %>
+  <%= form_with model: current_user.attends.build(event_id: event.id) do |f| %>
     <%= f.hidden_field :event_id %>
     <%= f.submit 'Attend to event!', class: 'btn btn-success mt-2 mb-2' %>
   <% end %>

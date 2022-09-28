@@ -15,6 +15,7 @@
     <%= f.input :description %>
     <%= f.input :location %>
     <%= f.input :event_date, as: :date, html5: true %>
+    <%= f.input :event_type, as: :radio_buttons, collection: [['Yes', true], ['No', false]], label: 'Is your event private?' %>
     <%= f.button :submit, class: 'btn btn-success mt-2 mb-2' %>
   <% end %>
 </div>

@@ -1,13 +1,24 @@
 class AttendsController < ApplicationController
   def create
+    debugger
     @event = Event.find(params[:attend][:event_id])
-    current_user.attends.create(event_id: @event.id)
-    redirect_to @event, notice: "You've successfully attended the event!"
+    @attend = current_user.attends.new(event_id: @event.id)
+    if @attend.save
+      redirect_to @event, notice: "You've successfully attended the event!"
+    end
   end
 
   def destroy
     @event = Event.find(params[:id])
-    current_user.attends.find_by(event_id: @event.id).destroy
-    redirect_to @event, notice: 'Attend canceled!'
+    @attend = current_user.attends.find_by(event_id: @event.id)
+    if @attend.destroy
+      redirect_to @event, notice: 'Attend canceled!'
+    end
+  end
+
+  private
+
+  def attend_params
+    params.require(:attend).permit(:attendee_ids)
   end
 end

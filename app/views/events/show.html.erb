@@ -2,7 +2,9 @@
   <div class="row align-items-start">
     <div class="col">
       <%= render @event %>
-      <%= render 'attend_buttons', event: @event %>
+      <% unless @event.private_event? %>
+        <%= render 'attend_buttons', event: @event %>
+      <% end %>
     </div>
     <div class="col">
       <p>People attended on this event:</p>
@@ -12,6 +14,8 @@
     </div>
     <% if current_user == @event.creator %>
       <div class="col">
+        <%= render 'invite', event: @event %>
+        <br /><br />
         <%= button_to 'Delete event', event_path, method: :delete,
                       data: { confirm: "Are you sure?" }, class: 'btn btn-danger' %>
       </div>

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   root to: 'events#index'
   resources :events do
-    post '/attend', to: 'events#attend', as: 'attend'
+    post '/attends', to: 'events#attend', as: 'attend'
   end
 
   get 'users/id' => 'users#show', as: 'profile'
