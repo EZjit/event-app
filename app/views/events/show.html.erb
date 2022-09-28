@@ -2,8 +2,9 @@
   <div class="row align-items-start">
     <div class="col">
       <%= render @event %>
-      <% unless @event.private_event? %>
-        <%= render 'attend_buttons', event: @event %>
+      <% if user_signed_in? %>
+        <%= render 'cancel_attend' if @event.private_event? && current_user.attended?(@event)%>
+        <%= render 'attend_buttons', event: @event unless @event.private_event? %>
       <% end %>
     </div>
     <div class="col">

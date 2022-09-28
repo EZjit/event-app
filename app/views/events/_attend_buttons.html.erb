@@ -1,4 +1,4 @@
-<% if user_signed_in? && current_user.attended?(event) %>
+<% if current_user.attended?(event) %>
   <%= render 'cancel_attend' %>
 <% else %>
   <%= render 'attend', event: event %>
