@@ -6,3 +6,6 @@ Functionality
   user can edit account 
   users can create and delete events
   users can attend events and cancel their attends
+
+Before starting app: rake db:seed
+Seeding database will take some time, there's a lot of data :)
